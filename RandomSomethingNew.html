@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>RandomSomethingNew</title>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5871873631634236"
+          crossorigin="anonymous"></script>
+
+  <style>
+    /* 簡單版面讓按鈕與廣告區塊不重疊 */
+    #ads-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    #refresh-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>RandomSomethingNew - 隨機廣告實驗網</h1>
+
+  <!-- 文字描述 -->
+  <p>
+    歡迎來到 RandomSomethingNew，這是一個隨機刷新廣告的實驗網站。點擊下方按鈕可以進行廣告刷新，體驗專屬於你的不同由Google篩選的推薦內容。目前僅適用於Google的廣告。
+  </p>
+  <p>
+    我是一名來自Taiwan的大學生，這個網站的製作目的是研究Google廣告的生成模式，以及為有需求的人推薦或找回你想見到的那些廣告內容。
+  </p>
+  <p>
+    此網站建立於2025/08/27，未來預計添加更多可能的實用性功能內容：其他廣告生成／問卷調查／瀏覽儲存／更多隨機項目等等。
+  </p>
+  <p>
+    感謝您的蒞臨！
+  </p>
+
+  <!-- 廣告區塊 -->
+  <div id="ads-wrapper">
+    <div id="ad-container-1"></div>
+    <div id="ad-container-2"></div>
+    <div id="ad-container-3"></div>
+  </div>
+
+  <!-- 刷新按鈕 -->
+  <button id="refresh-btn">刷新所有廣告</button>
+
+  <!-- 音效 -->
+  <audio id="click-sound" src="click.mp3"></audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // 刷新單個廣告區塊
+      function refreshSingleAd(containerId, slot) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; // 清空
+        const ad = document.createElement('ins');
+        ad.className = 'adsbygoogle';
+        ad.style.display = 'block';
+        ad.setAttribute('data-ad-client', 'ca-pub-5871873631634236');
+        ad.setAttribute('data-ad-slot', slot);
+        ad.setAttribute('data-ad-format', 'auto');
+        container.appendChild(ad);
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      }
+
+      // 刷新全部三個廣告
+      function refreshAllAds() {
+        refreshSingleAd('ad-container-1', '1234567890');
+        refreshSingleAd('ad-container-2', '1234567891');
+        refreshSingleAd('ad-container-3', '1234567892');
+      }
+
+      // 初始廣告
+      refreshAllAds();
+
+      // 按鈕點擊刷新
+      document.getElementById('refresh-btn').addEventListener('click', function() {
+        document.getElementById('click-sound').play();
+        refreshAllAds();
+      });
+
+      // 鍵盤按鍵刷新 (空白鍵)
+      document.addEventListener('keydown', function(event) {
+        if (event.code === 'Space') {
+          event.preventDefault(); // 避免頁面滾動
+          document.getElementById('click-sound').play();
+          refreshAllAds();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
