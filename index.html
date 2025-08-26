@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>RandomSomethingNew</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body>
+  <h1>RandomSomethingNew - 隨機廣告實驗網</h1>
+
+  <!-- 廣告區塊 -->
+  <div id="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-你的AdSense代碼"
+         data-ad-slot="你的廣告單元代碼"
+         data-ad-format="auto"></ins>
+  </div>
+
+  <!-- 刷新按鈕 -->
+  <button id="refresh-btn">刷新廣告</button>
+
+  <script>
+    // 初始廣告
+    (adsbygoogle = window.adsbygoogle || []).push({});
+
+    // 刷新廣告功能
+    document.getElementById('refresh-btn').addEventListener('click', function() {
+      let container = document.getElementById('ad-container');
+      container.innerHTML = ''; // 清空廣告
+      let ad = document.createElement('ins');
+      ad.className = 'adsbygoogle';
+      ad.style.display = 'block';
+      ad.setAttribute('data-ad-client', 'ca-pub-你的AdSense代碼');
+      ad.setAttribute('data-ad-slot', '你的廣告單元代碼');
+      ad.setAttribute('data-ad-format', 'auto');
+      container.appendChild(ad);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+  </script>
+</body>
+</html>
