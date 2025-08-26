@@ -2,78 +2,60 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>RandomSomethingNew</title>
+  <title>RandomSomethingNew - 隨機刷新廣告實驗網站</title>
   
-  <!-- Google AdSense 程式碼 -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5871873631634236"
-          crossorigin="anonymous"></script>
-
-  <style>
-    #ad-container { margin: 20px 0; text-align: center; }
-    .ad-box { margin: 10px auto; display: block; width: 300px; height: 250px; }
-    #refresh-btn { padding: 8px 16px; font-size: 16px; margin-bottom: 10px; cursor: pointer; }
-  </style>
+  <!-- SEO Meta -->
+  <meta name="description" content="隨機刷新 Google 廣告，探索你想看到的推薦內容。體驗專屬廣告實驗網站。">
+  <meta name="keywords" content="隨機刷新廣告, Google廣告, 隨機廣告網站, 廣告中介工具, 如何找回想看的 Google 廣告, 隨機刷新廣告工具, 廣告推薦實驗網站, 隨機廣告探索網站, 廣告推薦, 廣告互動實驗, 行銷工具, 廣告探索">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5871873631634236" crossorigin="anonymous"></script>
 </head>
 <body>
   <h1>RandomSomethingNew - 隨機廣告實驗網</h1>
 
-  <p>歡迎來到 RandomSomethingNew，這是一個隨機刷新廣告的實驗網站。點擊下方按鈕可以進行廣告刷新，體驗專屬於你的不同由Google篩選的推薦內容。目前僅適用於Google的廣告。</p>
-  <p>我是一名來自Taiwan的大學生，這個網站的製作目的是研究Google廣告的生成模式，以及為有需求的人推薦或找回你想見到的那些廣告內容</p>
-  <p>此網站建立於2025/08/27，未來預計添加更多可能的實用性功能內容：其他廣告生成／問卷調查／瀏覽儲存／更多隨機項目等等</p>
+  <p>歡迎來到 RandomSomethingNew，這是一個隨機刷新廣告的實驗網站。點擊下方按鈕可以進行廣告刷新，體驗專屬於你的不同由 Google 篩選的推薦內容。目前僅適用於 Google 的廣告。</p>
+  <p>我是一名來自 Taiwan 的大學生，這個網站的製作目的是研究 Google 廣告的生成模式，以及為有需求的人推薦或找回你想見到的那些廣告內容。</p>
+  <p>此網站建立於 2025/08/27，未來預計添加更多可能的實用性功能內容：其他廣告生成／問卷調查／瀏覽儲存／更多隨機項目等等。</p>
   <p>感謝您的蒞臨！</p>
 
-  <!-- 刷新按鈕（文字下方、廣告上方） -->
+  <!-- 刷新按鈕（放置於廣告區塊上方） -->
   <button id="refresh-btn">刷新廣告</button>
 
   <!-- 廣告區塊 -->
   <div id="ad-container">
-    <!-- 1️⃣ 第一個廣告 -->
-    <ins class="adsbygoogle ad-box"
-         style="display:block"
-         data-ad-client="ca-pub-5871873631634236"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"></ins>
-
-    <!-- 2️⃣ 第二個廣告 -->
-    <ins class="adsbygoogle ad-box"
-         style="display:block"
-         data-ad-client="ca-pub-5871873631634236"
-         data-ad-slot="2345678901"
-         data-ad-format="auto"></ins>
-
-    <!-- 3️⃣ 第三個廣告 -->
-    <ins class="adsbygoogle ad-box"
-         style="display:block"
-         data-ad-client="ca-pub-5871873631634236"
-         data-ad-slot="3456789012"
-         data-ad-format="auto"></ins>
+    <!-- 初始廣告會在 JavaScript 中生成 -->
   </div>
 
   <script>
-    // 初始三個廣告
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    // 設定廣告欄位數量
+    const adCount = 3; // 未來想增加欄位，只要改這個數字
+    const adSlots = ['1234567890','1234567891','1234567892']; // 替換為你的廣告單元代碼，長度需和 adCount 一致
+
+    // 初始化廣告
+    function initAds() {
+      const container = document.getElementById('ad-container');
+      container.innerHTML = ''; // 清空
+      for(let i=0; i<adCount; i++){
+        let ad = document.createElement('ins');
+        ad.className = 'adsbygoogle';
+        ad.style.display = 'block';
+        ad.setAttribute('data-ad-client', 'ca-pub-5871873631634236');
+        ad.setAttribute('data-ad-slot', adSlots[i]);
+        ad.setAttribute('data-ad-format', 'auto');
+        container.appendChild(ad);
+      }
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+
+    // 初始生成廣告
+    initAds();
 
     // 刷新廣告功能
     document.getElementById('refresh-btn').addEventListener('click', function() {
-      let container = document.getElementById('ad-container');
-      container.innerHTML = ''; // 清空所有廣告
-
-      // 建立三個廣告
-      let slots = ['1234567890', '2345678901', '3456789012']; // 依序替換你的廣告單元代碼
-      slots.forEach(function(slot) {
-        let ad = document.createElement('ins');
-        ad.className = 'adsbygoogle ad-box';
-        ad.style.display = 'block';
-        ad.setAttribute('data-ad-client', 'ca-pub-5871873631634236'); // 不變
-        ad.setAttribute('data-ad-slot', slot);
-        ad.setAttribute('data-ad-format', 'auto');
-        container.appendChild(ad);
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      });
+      initAds();
     });
   </script>
 </body>
 </html>
-
